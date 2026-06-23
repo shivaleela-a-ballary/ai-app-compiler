@@ -2,39 +2,40 @@
 
 ## Overview
 
-AI App Compiler converts a natural language application idea into a complete software blueprint.
+AI App Compiler converts natural language application requirements into a structured, validated, executable software blueprint.
 
-Example:
+Example Input:
 
 > Build a CRM with login, contacts, dashboard and admin role
 
-The system automatically generates:
+The system generates:
 
-* Application intent
-* Architecture design
-* Database schema
-* API schema
-* UI schema
-* Role-based access control
-* Validation & repair
-* FastAPI code
-* SQL schema
+* Intent Specification
+* Application Architecture
+* Database Schema
+* API Schema
+* UI Schema
+* Authentication Rules
+* Validation Report
+* Repaired Schema
+* FastAPI Runtime Code
+* SQL Schema
 
 ---
 
-## Architecture
+## Compiler Pipeline
 
 User Prompt
 ↓
-Intent Extractor (Groq)
+Intent Extraction
 ↓
-System Designer
+System Design
 ↓
-Schema Generator
+Schema Generation
 ↓
-UI Generator
+UI Generation
 ↓
-Auth Generator
+Authentication Generation
 ↓
 Validation Engine
 ↓
@@ -46,26 +47,85 @@ Runtime Generator
 
 ---
 
-## Tech Stack
+## Features
 
-* Python
-* FastAPI
-* Groq API
-* Llama 3.3 70B
-* JSON Schema
+### Multi-Stage Generation Pipeline
+
+* Intent Extraction
+* System Design Layer
+* Schema Generation
+* Validation Layer
+* Repair Layer
+* Runtime Generation
+
+### Reliability
+
+* Structured JSON output
+* Validation checks
+* Automatic repair mechanism
+* Cross-layer consistency checks
+
+### Runtime Awareness
+
+Generated outputs can be directly used for:
+
+* FastAPI backend generation
+* SQL schema generation
 
 ---
 
-## Run Locally
+## Evaluation Framework
+
+Dataset:
+
+* 10 Real Product Prompts
+* 10 Edge Case Prompts
+
+Metrics:
+
+* Success Rate
+* Repair Trigger Rate
+* Failure Types
+* Average Latency
+
+Results available in:
+
+evaluation/results.json
+
+---
+
+## Tech Stack
+
+Backend:
+
+* Python
+* FastAPI
+
+LLM:
+
+* Groq
+* Llama 3.3 70B
+
+Frontend:
+
+* React
+* Axios
+
+---
+
+## Run
+
+Backend:
 
 ```bash
-pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-Open:
+Frontend:
 
-http://127.0.0.1:8000/docs
+```bash
+npm run dev
+```
 
 ---
 
@@ -75,13 +135,15 @@ Build a CRM with login and contacts
 
 ---
 
-## Output
+## Repository Structure
 
-* Intent
-* Architecture
-* Database Schema
-* API Schema
-* UI Schema
-* Authentication Rules
-* Generated FastAPI Code
-* Generated SQL Code
+backend/
+├── pipeline/
+├── schemas/
+├── evaluation/
+└── main.py
+
+frontend/
+
+README.md
+ARCHITECTURE.md
