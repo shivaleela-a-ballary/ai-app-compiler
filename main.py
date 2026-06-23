@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from pipeline.intent_extractor import extract_intent
 from pipeline.system_designer import design_system
 from pipeline.schema_generator import generate_schemas
@@ -12,7 +13,13 @@ from pipeline.runtime_generator import (
     generate_sql_schema
 )
 
+from pipeline.clarifier import (
+    needs_clarification,
+    clarification_questions
+)
+
 app = FastAPI()
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -31,6 +38,13 @@ def home():
 
 @app.post("/generate")
 def generate(prompt: str):
+
+    # Ambiguity Handling
+    if needs_clarification(prompt):
+        return {
+            "status": "clarification_required",
+            "questions": clarification_questions()
+        }
 
     print("STEP 1")
     intent = extract_intent(prompt)
@@ -62,6 +76,7 @@ def generate(prompt: str):
     sql_code = generate_sql_schema(schemas)
 
     return {
+        "status": "success",
         "intent": intent,
         "architecture": architecture,
         "schemas": schemas,
