@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-
+from fastapi.middleware.cors import CORSMiddleware
 from pipeline.intent_extractor import extract_intent
 from pipeline.system_designer import design_system
 from pipeline.schema_generator import generate_schemas
@@ -13,6 +13,13 @@ from pipeline.runtime_generator import (
 )
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
