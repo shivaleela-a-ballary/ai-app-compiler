@@ -1,0 +1,23 @@
+[
+  {"prompt":"Build a CRM with login and contacts"},
+  {"prompt":"Build an e-commerce platform with payments"},
+  {"prompt":"Build a school management system"},
+  {"prompt":"Build a hospital management system"},
+  {"prompt":"Build a library management system"},
+  {"prompt":"Build a task management application"},
+  {"prompt":"Build a social media platform"},
+  {"prompt":"Build a job portal"},
+  {"prompt":"Build a hotel booking system"},
+  {"prompt":"Build a food delivery application"},
+
+  {"prompt":"Build something useful"},
+  {"prompt":"Create an app"},
+  {"prompt":"Build CRM and also not CRM"},
+  {"prompt":"Build a platform with no users"},
+  {"prompt":"Make an app for everyone"},
+  {"prompt":"Build a system but don't store any data"},
+  {"prompt":"Create a website and mobile app and desktop app"},
+  {"prompt":"Build an e-commerce platform without products"},
+  {"prompt":"Create an app with payments but no users"},
+  {"prompt":"Make a CRM with conflicting permissions"}
+]

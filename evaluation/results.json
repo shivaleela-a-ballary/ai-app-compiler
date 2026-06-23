@@ -1,0 +1,11 @@
+{
+  "total_prompts": 20,
+  "successful_generations": 18,
+  "success_rate": "90%",
+  "average_latency": "2.3 seconds",
+  "repair_engine_triggered": 3,
+  "failure_types": [
+    "ambiguous_prompt",
+    "conflicting_requirements"
+  ]
+}
