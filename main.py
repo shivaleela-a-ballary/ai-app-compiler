@@ -55,5 +55,15 @@ def generate(prompt: str):
     sql_code = generate_sql_schema(schemas)
 
     return {
-        "status": "success"
+        "intent": intent,
+        "architecture": architecture,
+        "schemas": schemas,
+        "ui": ui_schema,
+        "auth": auth_schema,
+        "validation": validation,
+        "repaired": repaired,
+        "generated_code": {
+            "fastapi": api_code,
+            "sql": sql_code
+        }
     }
