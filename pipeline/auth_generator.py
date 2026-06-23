@@ -1,13 +1,5 @@
-import os
 import json
-from dotenv import load_dotenv
-import google.generativeai as genai
-
-load_dotenv()
-
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-
-model = genai.GenerativeModel("gemini-2.5-flash")
+from pipeline.llm import generate_json
 
 
 def generate_auth(intent):
@@ -33,14 +25,19 @@ Format:
 """
     )
 
-    response = model.generate_content(prompt)
-
-    text = response.text.strip()
-    text = text.replace("```json", "")
-    text = text.replace("```", "")
-
-    try:
-        return json.loads(text)
-
-    except:
-        return {"roles": {}}
+    return generate_json(
+        prompt,
+        {
+            "roles": {
+                "admin": [
+                    "create",
+                    "read",
+                    "update",
+                    "delete"
+                ],
+                "user": [
+                    "read"
+                ]
+            }
+        }
+    )
