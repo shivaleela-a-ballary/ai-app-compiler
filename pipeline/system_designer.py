@@ -1,15 +1,5 @@
-import os
 import json
-from dotenv import load_dotenv
-import google.generativeai as genai
-
-load_dotenv()
-
-genai.configure(
-    api_key=os.getenv("GEMINI_API_KEY")
-)
-
-model = genai.GenerativeModel("gemini-2.5-flash")
+from pipeline.llm import generate_json
 
 
 def design_system(intent):
@@ -43,22 +33,21 @@ Return JSON in this format:
 """
     )
 
-    response = model.generate_content(prompt)
-
-    text = response.text.strip()
-
-    text = text.replace("```json", "")
-    text = text.replace("```", "")
-
-    try:
-        return json.loads(text)
-
-    except Exception as e:
-        print("JSON Parse Error:", e)
-        print("Gemini Output:", text)
-
-        return {
-            "app_type": intent.get("app_type", "Unknown"),
-            "entities": [],
+    return generate_json(
+        prompt,
+        {
+            "app_type": intent.get("app_type", "CRM"),
+            "entities": [
+                {
+                    "name": "User",
+                    "fields": [
+                        "id",
+                        "email",
+                        "password",
+                        "role"
+                    ]
+                }
+            ],
             "relationships": []
         }
+    )
