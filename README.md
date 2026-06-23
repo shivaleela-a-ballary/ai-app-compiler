@@ -1,17 +1,17 @@
-# AI App Compiler
+# 🚀 AI App Compiler
 
 ## Overview
 
-AI App Compiler converts natural language application requirements into a structured, validated, executable software blueprint.
+AI App Compiler converts natural language requirements into a structured, validated and executable software blueprint.
 
 Example Input:
 
-> Build a CRM with login, contacts, dashboard and admin role
+> Build a CRM with login, contacts, dashboard, role-based access and premium plans.
 
-The system generates:
+Generated Output:
 
 * Intent Specification
-* Application Architecture
+* System Architecture
 * Database Schema
 * API Schema
 * UI Schema
@@ -25,25 +25,55 @@ The system generates:
 
 ## Compiler Pipeline
 
-User Prompt
-↓
-Intent Extraction
-↓
-System Design
-↓
-Schema Generation
-↓
-UI Generation
-↓
-Authentication Generation
-↓
-Validation Engine
-↓
-Repair Engine
-↓
-Runtime Generator
-├── FastAPI Code
-└── SQL Code
+```text
+┌─────────────────────────┐
+│      User Prompt        │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│   Intent Extraction     │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│     System Design       │
+│ (Entities, Roles, Flow) │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│   Schema Generation     │
+├─────────────────────────┤
+│ • Database Schema       │
+│ • API Schema            │
+│ • UI Schema             │
+│ • Auth Rules            │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│    Validation Engine    │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│      Repair Engine      │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│   Runtime Generation    │
+├─────────────────────────┤
+│ • FastAPI Code          │
+│ • SQL Schema            │
+└────────────┬────────────┘
+             │
+             ▼
+┌─────────────────────────┐
+│  Executable App Output  │
+└─────────────────────────┘
+```
 
 ---
 
@@ -54,23 +84,53 @@ Runtime Generator
 * Intent Extraction
 * System Design Layer
 * Schema Generation
-* Validation Layer
-* Repair Layer
+* UI Generation
+* Authentication Generation
+* Validation Engine
+* Repair Engine
 * Runtime Generation
 
-### Reliability
+### Reliability Features
 
-* Structured JSON output
-* Validation checks
-* Automatic repair mechanism
-* Cross-layer consistency checks
+✅ Structured JSON Output
 
-### Runtime Awareness
+✅ Schema Validation
 
-Generated outputs can be directly used for:
+✅ Automatic Repair Engine
 
-* FastAPI backend generation
-* SQL schema generation
+✅ Ambiguity Detection
+
+✅ Clarification Handling
+
+✅ Runtime Code Generation
+
+✅ Evaluation Framework
+
+✅ Edge Case Testing
+
+---
+
+## Ambiguity Handling
+
+Example Input:
+
+```text
+Build something useful
+```
+
+Output:
+
+```json
+{
+  "status": "clarification_required",
+  "questions": [
+    "What type of application do you want?",
+    "Who are the users?",
+    "What are the core features?",
+    "Do you need authentication and roles?"
+  ]
+}
+```
 
 ---
 
@@ -81,69 +141,114 @@ Dataset:
 * 10 Real Product Prompts
 * 10 Edge Case Prompts
 
-Metrics:
+Metrics Tracked:
 
 * Success Rate
+* Average Latency
 * Repair Trigger Rate
 * Failure Types
-* Average Latency
+* Clarification Requests
 
-Results available in:
+Files:
 
-evaluation/results.json
+```text
+evaluation/
+├── prompts.json
+├── results.json
+└── README.md
+```
 
 ---
 
 ## Tech Stack
 
-Backend:
+### Backend
 
 * Python
 * FastAPI
 
-LLM:
-
-* Groq
-* Llama 3.3 70B
-
-Frontend:
+### Frontend
 
 * React
 * Axios
+* Vite
+
+### LLM
+
+* Groq
+* Llama 3.3 70B Versatile
 
 ---
 
-## Run
+## Project Structure
 
-Backend:
+```text
+backend/
+├── pipeline/
+│   ├── intent_extractor.py
+│   ├── system_designer.py
+│   ├── schema_generator.py
+│   ├── ui_generator.py
+│   ├── auth_generator.py
+│   ├── validator.py
+│   ├── repair_engine.py
+│   ├── runtime_generator.py
+│   ├── clarifier.py
+│   └── llm.py
+│
+├── evaluation/
+│
+├── schemas/
+│
+├── frontend/
+│
+└── main.py
+```
+
+---
+
+## Run Backend
 
 ```bash
 uvicorn main:app --reload
 ```
 
-Frontend:
+Open:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+---
+
+## Run Frontend
 
 ```bash
+npm install
+
 npm run dev
+```
+
+Open:
+
+```text
+http://localhost:5173
 ```
 
 ---
 
 ## Sample Prompt
 
-Build a CRM with login and contacts
+```text
+Build a CRM with login, contacts, dashboard, role-based access, premium subscription plans and admin analytics.
+```
 
 ---
 
-## Repository Structure
+## Author
 
-backend/
-├── pipeline/
-├── schemas/
-├── evaluation/
-└── main.py
+Shivaleela A Ballary
 
-frontend/
+Computer Science Engineering
 
-README.md
-ARCHITECTURE.md
+AI App Compiler Internship Assignment
