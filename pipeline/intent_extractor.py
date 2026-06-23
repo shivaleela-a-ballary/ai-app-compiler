@@ -1,15 +1,4 @@
-import os
-import json
-from dotenv import load_dotenv
-import google.generativeai as genai
-
-load_dotenv()
-
-genai.configure(
-    api_key=os.getenv("GEMINI_API_KEY")
-)
-
-model = genai.GenerativeModel("gemini-2.5-flash")
+from pipeline.llm import generate_json
 
 
 def extract_intent(user_prompt):
@@ -31,22 +20,9 @@ User Request:
 {user_prompt}
 """
 
-    try:
-        response = model.generate_content(prompt)
-
-        text = response.text.strip()
-
-        text = text.replace("```json", "")
-        text = text.replace("```", "")
-
-        return json.loads(text)
-
-    except Exception as e:
-
-        print("Gemini Error:", e)
-
-        # Fallback response
-        return {
+    return generate_json(
+        prompt,
+        {
             "app_type": "CRM",
             "features": [
                 "login",
@@ -57,3 +33,4 @@ User Request:
                 "admin"
             ]
         }
+    )
